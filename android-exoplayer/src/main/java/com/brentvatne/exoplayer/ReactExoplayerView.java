@@ -346,6 +346,29 @@ class ReactExoplayerView extends FrameLayout implements
             }
         });
 
+        //Handling the pauseButton click event
+        ImageButton fullScreen = playerControlView.findViewById(R.id.exo_maximize);
+        ImageButton screenMinimize = playerControlView.findViewById(R.id.exo_minimize);
+        fullScreen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fullScreen.setVisibility(View.GONE);
+                setFullscreen(!isFullscreen);
+                screenMinimize.setVisibility(View.VISIBLE);
+            }
+        });
+
+        screenMinimize.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                screenMinimize.setVisibility(View.GONE);
+                setFullscreen(!isFullscreen);
+                fullScreen.setVisibility(View.VISIBLE);
+
+            }
+        });
+              
+
         // Invoking onPlayerStateChanged event for Player
         eventListener = new Player.EventListener() {
             @Override
